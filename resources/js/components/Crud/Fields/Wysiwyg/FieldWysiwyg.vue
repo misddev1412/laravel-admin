@@ -15,12 +15,11 @@
                 :class="state === false ? 'form-control is-invalid' : ''"
                 v-if="editor"
             >
-            
-
+              
                 <ckeditor 
                     :id="identifier" 
                     v-if="!editRaw" 
-                    v-model="editor" 
+                    v-model="content" 
                     :editor="editor"
                     class="lit-field-wysiwyg__content" :config="editorConfig" :editor-url="editorUrl" >
                 </ckeditor>
@@ -102,6 +101,7 @@ export default {
     },
     data() {
         return {
+            content: null,
             editor: null,
             editRaw: false,
             linkUrl: null,
@@ -140,6 +140,9 @@ export default {
             this.$emit('input', getHTML());
             this.valueCopy = _.clone(getHTML());
         });
+        this.content.on('update', ({ value }) => {
+           console.log(value)
+        });
 
         Lit.bus.$on('languageChanged', () => {
             this.$nextTick(() => {
@@ -159,10 +162,6 @@ export default {
                 this.$emit('input', data);
             }
         },
-        editor(val) {
-            this.$emit('input', val);
-            this.valueCopy = _.clone(val);
-        }
     },
     methods: {
         init() {
