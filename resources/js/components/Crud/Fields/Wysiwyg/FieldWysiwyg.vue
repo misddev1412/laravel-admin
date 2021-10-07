@@ -135,7 +135,7 @@ export default {
     },
     mounted() {
         this.editor.setContent(this.value);
-
+        this.content = this.value
         this.editor.on('update', ({ getHTML }) => {
             this.$emit('input', getHTML());
             this.valueCopy = _.clone(getHTML());
@@ -162,6 +162,7 @@ export default {
         },
         content(val) {
             console.log(val)
+            this.valueCopy = _.clone(val);
 
             this.$emit('input', val);
 
