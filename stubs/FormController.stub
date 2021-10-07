@@ -1,0 +1,30 @@
+<?php
+
+namespace Lit\Http\Controllers\Form\DummyNamespace;
+
+use Illuminate\Contracts\Auth\Access\Authorizable;
+use Ignite\Crud\Controllers\FormController;
+use Ignite\Config\Form\DummyNamespace\DummyConfigClass;
+
+class DummyClassname extends FormController
+{
+    /**
+     * Form config class.
+     *
+     * @var string
+     */
+    protected $config = DummyConfigClass::class;
+
+    /**
+     * Authorize request for authenticated litstack-user and permission operation.
+     * Operations: read, update
+     *
+     * @param Authorizable $user
+     * @param string $operation
+     * @return boolean
+     */
+    public function authorize(Authorizable $user, string $operation): bool
+    {
+        return $user->can("{$operation} DummyPermission");
+    }
+}

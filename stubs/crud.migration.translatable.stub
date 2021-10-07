@@ -1,0 +1,43 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+use Ignite\Support\Migration\MigratePermissions;
+
+class DummyClassname extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('DummyTablename', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+        });
+        
+        Schema::create('DummyTranslationTablename', function (Blueprint $table) {
+            $table->translates('DummyTablename');
+
+            // Set all columns that are translated here.
+            // Set them to fillable in the translation Model.
+
+            //$table->string('title')->nullable();
+            DummySlug
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('DummyTranslationTablename');
+        Schema::dropIfExists('DummyTablename');
+    }
+}

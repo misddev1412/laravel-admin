@@ -1,0 +1,15 @@
+    /**
+     * Unique by title + locale.
+     *
+     * @param Builder $query
+     * @param mixed $model
+     * @param mixed $attribute
+     * @param array $config
+     * @param string $slug
+     * @return void
+     */
+    public function scopeWithUniqueSlugConstraints(Builder $query, $model, $attribute, $config, $slug)
+    {
+        $query->where('locale', $model->locale);
+    }
+

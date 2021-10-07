@@ -1,0 +1,15 @@
+<?php
+
+namespace DummyNamespace;
+
+use Ignite\Crud\BaseForm as Form;
+
+class DummyClass
+{
+    public function register()
+    {
+        Form::macro('DummyTypeMacro', function () {
+            // $this->input('text');
+        });
+    }
+}

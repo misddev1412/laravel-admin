@@ -1,0 +1,9 @@
+/**
+     * Image attribute.
+     *
+     * @return \Lit\Crud\Models\Media
+     */
+    public function getImageAttribute()
+    {
+        return $this->getMedia('image')->first();
+    }

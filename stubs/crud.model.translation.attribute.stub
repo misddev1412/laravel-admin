@@ -1,0 +1,9 @@
+    /**
+     * Append the translation to each query.
+     *
+     * @return array
+     */
+    public function getTranslationAttribute()
+    {
+        return $this->getTranslationsArray();
+    }
