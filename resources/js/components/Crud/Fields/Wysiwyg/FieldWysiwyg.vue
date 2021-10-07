@@ -8,7 +8,7 @@
         <div class="lit-field-wysiwyg__css" v-if="field.css">
             <v-style v-html="prependCssSelectors(field.css)"></v-style>
         </div>
-        sadasdasdasd
+        
         <template v-if="!field.readonly">
             <div
                 class="lit-field-wysiwyg"
@@ -253,6 +253,8 @@
                     :id="identifier"
                     v-if="!editRaw"
                 />
+                <ckeditor v-model="valueCopy" :config="editorConfig" :editor-url="editorUrl" ></ckeditor>
+
 
                 <b-form-textarea
                     class="lit-field-wysiwyg_raw"
@@ -271,6 +273,8 @@
 </template>
 
 <script>
+import CKEditor from 'ckeditor4-vue';
+
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
 import {
     Blockquote,
@@ -302,6 +306,7 @@ export default {
     name: 'FieldWysiwyg',
     components: {
         EditorContent,
+        CKEditor,
         EditorMenuBar,
         'v-style': {
             render: function(createElement) {
@@ -329,6 +334,27 @@ export default {
             linkUrl: null,
             target: null,
             valueCopy: _.clone(this.value),
+            editorUrl: "https://cdn.ckeditor.com/4.14.1/full-all/ckeditor.js",
+            editorData: '',
+            editorConfig: {
+                toolbarGroups : [
+                    { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+                    { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+                    { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+                    { name: 'forms', groups: [ 'forms' ] },
+                    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                    { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+                    { name: 'links', groups: [ 'links' ] },
+                    { name: 'insert', groups: [ 'insert' ] },
+                    { name: 'styles', groups: [ 'styles' ] },
+                    { name: 'colors', groups: [ 'colors' ] },
+                    { name: 'tools', groups: [ 'tools' ] },
+                    { name: 'others', groups: [ 'others' ] },
+                    { name: 'about', groups: [ 'about' ] }
+                ],
+                removeButtons: 'NewPage,Print,Save,Templates,Replace,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CreateDiv,Anchor,Flash,Smiley,PageBreak,ShowBlocks,About,Language,Iframe,Image'
+            }
+
         };
     },
     beforeMount() {
