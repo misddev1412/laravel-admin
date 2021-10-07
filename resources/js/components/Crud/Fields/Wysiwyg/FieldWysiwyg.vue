@@ -15,9 +15,15 @@
                 :class="state === false ? 'form-control is-invalid' : ''"
                 v-if="editor"
             >
-               
-                <ckeditor :id="identifier" v-if="!editRaw" v-model="valueCopy" :editor="editor"
-                    class="lit-field-wysiwyg__content" :config="editorConfig" :editor-url="editorUrl" ></ckeditor>
+            
+
+                <ckeditor 
+                    :id="identifier" 
+                    v-if="!editRaw" 
+                    v-model="editor" 
+                    :editor="editor"
+                    class="lit-field-wysiwyg__content" :config="editorConfig" :editor-url="editorUrl" >
+                </ckeditor>
 
 
                 <b-form-textarea
@@ -153,6 +159,10 @@ export default {
                 this.$emit('input', data);
             }
         },
+        editor(val) {
+            this.$emit('input', val);
+            this.valueCopy = _.clone(val);
+        }
     },
     methods: {
         init() {
