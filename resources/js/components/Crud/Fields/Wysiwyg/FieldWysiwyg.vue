@@ -15,8 +15,9 @@
                 :class="state === false ? 'form-control is-invalid' : ''"
                 v-if="editor"
             >
-        
-                <ckeditor v-model="valueCopy" :config="editorConfig" :editor-url="editorUrl" ></ckeditor>
+               
+                <ckeditor :id="identifier" v-if="!editRaw" v-model="valueCopy" :editor="editor"
+                    class="lit-field-wysiwyg__content" :config="editorConfig" :editor-url="editorUrl" ></ckeditor>
 
 
                 <b-form-textarea
