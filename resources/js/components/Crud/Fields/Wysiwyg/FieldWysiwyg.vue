@@ -253,7 +253,7 @@
                     :id="identifier"
                     v-if="!editRaw"
                 />
-                <ck-editor v-model="valueCopy" :config="editorConfig" :editor-url="editorUrl" ></ck-editor>
+                <ckeditor v-model="valueCopy" :config="editorConfig" :editor-url="editorUrl" ></ckeditor>
 
 
                 <b-form-textarea
@@ -273,7 +273,10 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 import CKEditor from 'ckeditor4-vue';
+Vue.use( CKEditor );
 
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
 import {
@@ -307,7 +310,6 @@ export default {
     components: {
         EditorContent,
         CKEditor,
-        'ck-editor': CKEditor,
         EditorMenuBar,
         'v-style': {
             render: function(createElement) {
