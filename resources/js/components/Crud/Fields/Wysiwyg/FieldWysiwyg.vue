@@ -253,7 +253,7 @@
                     :id="identifier"
                     v-if="!editRaw"
                 />
-                <ckeditor v-model="valueCopy" :config="editorConfig" :editor-url="editorUrl" ></ckeditor>
+                <ck-editor v-model="valueCopy" :config="editorConfig" :editor-url="editorUrl" ></ck-editor>
 
 
                 <b-form-textarea
@@ -307,6 +307,7 @@ export default {
     components: {
         EditorContent,
         CKEditor,
+        'ck-editor': CKEditor,
         EditorMenuBar,
         'v-style': {
             render: function(createElement) {
