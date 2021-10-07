@@ -140,9 +140,7 @@ export default {
             this.$emit('input', getHTML());
             this.valueCopy = _.clone(getHTML());
         });
-        this.content.on('update', ({ value }) => {
-           console.log(value)
-        });
+
 
         Lit.bus.$on('languageChanged', () => {
             this.$nextTick(() => {
@@ -161,6 +159,12 @@ export default {
                 this.editor.setContent(data);
                 this.$emit('input', data);
             }
+        },
+        content(val) {
+            console.log(val)
+
+            this.$emit('input', val);
+
         },
     },
     methods: {
