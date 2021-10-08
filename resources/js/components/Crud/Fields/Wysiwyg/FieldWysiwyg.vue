@@ -23,7 +23,7 @@
                     :editor="editor"
                     class="lit-field-wysiwyg__content" :config="editorConfig" :editor-url="editorUrl" >
                 </ckeditor>
-                <ckeditor :editor="editor" 
+                <ckeditor :editor="editorContent" 
                 :id="identifier" 
                 v-if="!editRaw" 
                 v-model="content" 
@@ -117,7 +117,7 @@ export default {
             valueCopy: _.clone(this.value),
             editorUrl: "https://cdn.ckeditor.com/4.14.1/full-all/ckeditor.js",
             editorData: '',
-            editor: ClassicEditor,
+            editorContent: ClassicEditor,
             editorConfig: {
               
                 plugins: [ CKFinder],
