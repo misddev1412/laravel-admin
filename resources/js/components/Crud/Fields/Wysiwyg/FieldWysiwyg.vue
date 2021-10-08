@@ -11,7 +11,7 @@
         
         <template v-if="!field.readonly">
             <div
-                class="lit-field-wysiwyg"
+                
                 :class="state === false ? 'form-control is-invalid' : ''"
                 v-if="editor"
             >
@@ -45,6 +45,8 @@
 import Vue from 'vue';
 
 import CKEditor from 'ckeditor4-vue';
+import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
+
 Vue.use( CKEditor );
 
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
@@ -125,7 +127,18 @@ export default {
                     { name: 'others', groups: [ 'others' ] },
                     { name: 'about', groups: [ 'about' ] }
                 ],
-                removeButtons: 'NewPage,Print,Save,Templates,Replace,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CreateDiv,Anchor,Flash,Smiley,PageBreak,ShowBlocks,About,Language,Iframe,Image'
+                plugins: [ CKFinder],
+                ckfinder: {
+                    // Upload the images to the server using the CKFinder QuickUpload command.
+                    uploadUrl: 'https://example.com/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images&responseType=json',
+
+                    // Define the CKFinder configuration (if necessary).
+                    options: {
+                        resourceType: 'Images'
+                    }
+                },
+
+                removeButtons: 'NewPage,Print,Save,Templates,Replace,Find,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CreateDiv,Anchor,Flash,Smiley,PageBreak,ShowBlocks,About,Language'
             }
 
         };
