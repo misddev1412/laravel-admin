@@ -23,11 +23,6 @@
   */
 
 /*!
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
- */
-
-/*!
  * ApexCharts v3.28.3
  * (c) 2018-2021 ApexCharts
  * Released under the MIT License.

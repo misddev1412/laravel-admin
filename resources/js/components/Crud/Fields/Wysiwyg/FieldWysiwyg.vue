@@ -53,8 +53,8 @@ import CKEditor from '@ckeditor/ckeditor5-vue2';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 
 Vue.use( CKEditor );
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor'
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
 import {
     Blockquote,
