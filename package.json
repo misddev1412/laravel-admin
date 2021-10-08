@@ -78,7 +78,9 @@
         "webpack": "^5.0"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^30.0.0",
         "@ckeditor/ckeditor5-ckfinder": "^30.0.0",
+        "@ckeditor/ckeditor5-vue2": "^1.0.5",
         "@fortawesome/fontawesome-svg-core": "^1.2.27",
         "@fortawesome/free-brands-svg-icons": "^5.12.1",
         "@fortawesome/free-regular-svg-icons": "^5.12.1",

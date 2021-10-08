@@ -23,6 +23,11 @@
                     :editor="editor"
                     class="lit-field-wysiwyg__content" :config="editorConfig" :editor-url="editorUrl" >
                 </ckeditor>
+                <ckeditor :editor="editor" 
+                :id="identifier" 
+                v-if="!editRaw" 
+                v-model="content" 
+                :config="editorConfig"></ckeditor>
 
 
                 <b-form-textarea
@@ -44,10 +49,11 @@
 <script>
 import Vue from 'vue';
 
-import CKEditor from 'ckeditor4-vue';
+import CKEditor from '@ckeditor/ckeditor5-vue2';
 import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
 
 Vue.use( CKEditor );
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
 import {
@@ -111,6 +117,7 @@ export default {
             valueCopy: _.clone(this.value),
             editorUrl: "https://cdn.ckeditor.com/4.14.1/full-all/ckeditor.js",
             editorData: '',
+            editor: ClassicEditor,
             editorConfig: {
                 toolbarGroups : [
                     { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
