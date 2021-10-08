@@ -16,13 +16,7 @@
                 v-if="editor"
             >
               
-                <ckeditor 
-                    :id="identifier" 
-                    v-if="!editRaw" 
-                    v-model="content" 
-                    :editor="editor"
-                    class="lit-field-wysiwyg__content" :config="editorConfig" :editor-url="editorUrl" >
-                </ckeditor>
+            
                 <ckeditor :editor="editorContent" 
                 :id="identifier" 
                 v-if="!editRaw" 
